@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Audio Stackoverflow</title>
+  </head>
+
+<body translate="no" >
+<input type="file" id="upload" multiple />
+
+<script>
+function handleFiles(event) {
+    var files = event.target.files;
+    for (var i = 0; i < files.length; i++) {
+      var p = document.createElement("p");
+      p.innerHTML = files[i].name;
+      var audio = document.createElement("audio");
+      audio.setAttributeNode(document.createAttribute("controls"));
+      var source = document.createElement("source");
+      source.setAttribute("src", URL.createObjectURL(files[i]));
+      audio.appendChild(source);
+      document.body.appendChild(p);
+      document.body.appendChild(audio);
+    }
+}
+document.getElementById("upload").addEventListener("change", handleFiles, false);
+</script>
+</body>
+
+</html>
+ 
